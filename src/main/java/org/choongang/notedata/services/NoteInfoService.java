@@ -17,7 +17,6 @@ import org.choongang.notedata.entities.NoteData;
 import org.choongang.notedata.entities.QNoteData;
 import org.choongang.notedata.exceptions.NoteDataNotFoundException;
 import org.choongang.notedata.repositories.NoteDataRepository;
-import org.choongang.notedata.services.config.NoteConfigInfoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +33,6 @@ import static org.springframework.data.domain.Sort.Order.desc;
 @RequiredArgsConstructor
 @Transactional
 public class NoteInfoService {
-    private final NoteConfigInfoService configInfoService;
     private final NoteDataRepository noteDataRepository;
     private final HttpServletRequest request;
     private final FileInfoService fileInfoService;

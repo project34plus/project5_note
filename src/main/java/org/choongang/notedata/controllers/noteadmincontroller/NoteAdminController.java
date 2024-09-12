@@ -1,4 +1,4 @@
-package org.choongang.notedata.controllers;
+package org.choongang.notedata.controllers.noteadmincontroller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.rests.JSONData;
-import org.choongang.notedata.services.NoteSaveService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class NoteAdminController {
-    private final NoteSaveService noteSaveService;
+
     private final HttpServletRequest request;
 
     /**
@@ -29,24 +28,23 @@ public class NoteAdminController {
     @Operation(summary = "노트 설정 등록", method="POST")
     @ApiResponse(responseCode = "201")
     @PostMapping("/register")
-    public ResponseEntity<Void> register(RequestNoteData form) {
+    public ResponseEntity<Void> register() {
 
-        return save(form);
+        return save();
     }
 
     @Operation(summary = "노트 설정 수정", method="PATCH")
     @ApiResponse(responseCode = "200")
     @PatchMapping("/update/{nid}")
-    public ResponseEntity<Void> update(@PathVariable("nid") String nid, RequestNoteData form) {
-        return save(form);
+    public ResponseEntity<Void> update(@PathVariable("nid") String nid) {
+        return save();
     }
 
-    public ResponseEntity<Void> save(RequestNoteData form) {
+    public ResponseEntity<Void> save() {
 
         String method = request.getMethod().toUpperCase();
         HttpStatus status = method.equals("PATCH") ? HttpStatus.OK : HttpStatus.CREATED;
 
-        noteSaveService.save(form);
         return ResponseEntity.status(status).build();
     }
 
