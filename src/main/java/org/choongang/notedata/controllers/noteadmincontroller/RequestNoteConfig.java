@@ -1,4 +1,4 @@
-package org.choongang.notedata.controllers.adminnotecontroller;
+package org.choongang.notedata.controllers.noteadmincontroller;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

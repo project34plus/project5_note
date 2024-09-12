@@ -2,9 +2,9 @@ package org.choongang.notedata.services.config;
 
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.Utils;
-import org.choongang.note.controllers.RequestNoteConfig;
-import org.choongang.note.entities.Note;
-import org.choongang.note.repositories.NoteRepository;
+import org.choongang.notedata.controllers.noteadmincontroller.RequestNoteConfig;
+import org.choongang.notedata.entities.Note;
+import org.choongang.notedata.repositories.NoteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

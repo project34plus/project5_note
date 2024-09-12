@@ -2,8 +2,8 @@ package org.choongang.notedata.services.config;
 
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.Utils;
-import org.choongang.note.entities.Note;
-import org.choongang.note.repositories.NoteRepository;
+import org.choongang.notedata.entities.Note;
+import org.choongang.notedata.repositories.NoteRepository;
 import org.springframework.stereotype.Service;
 
 // 노트 설정 삭제

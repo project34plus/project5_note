@@ -1,4 +1,4 @@
-package org.choongang.notedata.controllers.adminnotecontroller;
+package org.choongang.notedata.controllers.noteadmincontroller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
