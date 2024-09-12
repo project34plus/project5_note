@@ -1,4 +1,4 @@
-package org.choongang.note.controllers;
+package org.choongang.notedata.controllers.adminnotecontroller;
 
 import org.choongang.global.CommonSearch;
 

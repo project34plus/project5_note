@@ -1,4 +1,4 @@
-package org.choongang.note.exceptions;
+package org.choongang.notedata.exceptions.noteadminexception;
 
 import org.choongang.global.exceptions.CommonException;
 import org.springframework.http.HttpStatus;

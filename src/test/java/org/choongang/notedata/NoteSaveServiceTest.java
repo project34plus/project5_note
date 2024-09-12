@@ -1,7 +1,6 @@
 package org.choongang.notedata;
 
 import org.choongang.notedata.controllers.RequestNoteData;
-import org.choongang.notedata.entities.Note;
 import org.choongang.notedata.entities.NoteData;
 import org.choongang.notedata.repositories.NoteRepository;
 import org.choongang.notedata.services.NoteSaveService;
