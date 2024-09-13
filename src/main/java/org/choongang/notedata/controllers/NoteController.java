@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name="Note", description = "노트 API")
 @RestController
 @RequiredArgsConstructor
@@ -92,7 +94,7 @@ public class NoteController {
 
     @GetMapping("/list/{nid}")
     public JSONData list(@PathVariable("nid") String nid, @ModelAttribute NoteDataSearch search) {
-        search.setNid(nid);
+        search.setNid(List.of(nid));
         ListData<NoteData> data = noteInfoService.getList(search);
 
         return new JSONData(data);

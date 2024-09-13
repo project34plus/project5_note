@@ -48,6 +48,10 @@ public class NoteConfigInfoService {
         QNote note = QNote.note;
         String sopt = search.getSopt();
         String skey = search.getSkey();
+        List<String> nid = search.getNid();
+        if (nid != null && !nid.isEmpty()) {
+            andBuilder.and(note.nid.in(nid));
+        }
         sopt = StringUtils.hasText(sopt) ? sopt.trim().toUpperCase() : sopt;
         if (skey != null && !skey.isBlank()) {
             skey = skey.trim();
