@@ -27,7 +27,7 @@ public class NoteConfigSaveService {
 
         Note note = null;
         if (mode.equals("update") && nid != null) {
-            note = noteRepository.findById(nid).orElseThrow(NoteNotFoundException::new);
+              note = noteRepository.findById(nid).orElseThrow(NoteNotFoundException::new);
         } else {
             note = new Note();
             note.setNid(form.getNid());
