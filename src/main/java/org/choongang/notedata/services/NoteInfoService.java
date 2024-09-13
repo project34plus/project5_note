@@ -58,8 +58,8 @@ public class NoteInfoService {
         BooleanBuilder andBuilder = new BooleanBuilder();
         QNoteData noteData = QNoteData.noteData;
 
-        String nid = search.getNid();
-        andBuilder.and(noteData.note.nid.eq(nid));
+        List<String> nid = search.getNid();
+        andBuilder.and(noteData.note.nid.in(nid));
 
         String sopt = search.getSopt();
         String skey = search.getSkey();
