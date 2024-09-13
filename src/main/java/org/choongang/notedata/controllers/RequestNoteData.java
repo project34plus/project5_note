@@ -21,8 +21,10 @@ public class RequestNoteData {
 
     private String gid = UUID.randomUUID().toString(); // 그룹 ID
 
+    @NotBlank
     private String subject; // 제목
 
+    @NotBlank
     private String content;
 
     private List<FileInfo> editorImages;
