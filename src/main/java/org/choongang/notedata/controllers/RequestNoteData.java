@@ -27,7 +27,7 @@ public class RequestNoteData {
 
     private List<FileInfo> editorImages;
     private List<FileInfo> attachFiles;
-
+    private String email;
 
 
     private String username; //로그인 회원명
