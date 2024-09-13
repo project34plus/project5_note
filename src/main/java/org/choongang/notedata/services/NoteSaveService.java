@@ -21,7 +21,7 @@ public class NoteSaveService {
     private final FileUploadDoneService uploadDoneService;
     private final MemberUtil memberUtil;
 
-    public NoteData save(RequestNoteData form) {
+    public void save(RequestNoteData form) {
 
         String mode = Objects.requireNonNullElse(form.getMode(), "register");
         Long nid = form.getNoteSeq();
@@ -50,6 +50,5 @@ public class NoteSaveService {
 
         // 파일 업로드 완료 처리
         uploadDoneService.process(noteData.getGid());
-        return noteData;
     }
 }

@@ -6,7 +6,9 @@ import lombok.Data;
 @Data
 public class RequestNoteConfig {
 
-    private String mode = "add";
+    private Long noteSeq;
+
+    private String mode;
     @NotBlank
     private String nid; // 게시판 아이디
 

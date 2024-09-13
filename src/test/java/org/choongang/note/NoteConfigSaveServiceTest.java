@@ -1,12 +1,11 @@
-package org.choongang.notedata;
+package org.choongang.note;
 
 import org.choongang.member.MemberUtil;
-import org.choongang.notedata.controllers.RequestNoteData;
+import org.choongang.notedata.controllers.noteadmincontroller.RequestNoteConfig;
 import org.choongang.notedata.entities.Note;
-import org.choongang.notedata.entities.NoteData;
 import org.choongang.notedata.repositories.NoteDataRepository;
 import org.choongang.notedata.repositories.NoteRepository;
-import org.choongang.notedata.services.NoteSaveService;
+import org.choongang.notedata.services.config.NoteConfigSaveService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -17,14 +16,15 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.hibernate.validator.internal.util.Contracts.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class NoteSaveServiceTest {
+public class NoteConfigSaveServiceTest {
 
     @Autowired
-    private NoteSaveService noteSaveService;
+    private NoteConfigSaveService noteConfigSaveService;
 
     @Autowired
     private NoteRepository noteRepository;
@@ -38,7 +38,7 @@ public class NoteSaveServiceTest {
     private Note note;
 
     @BeforeEach
-    void init(){
+    void init() {
         note = new Note();
         note.setNid("note");
         note.setNName("노트");
@@ -48,29 +48,27 @@ public class NoteSaveServiceTest {
 
     @Test
     @WithMockUser(username = "test01@test.org")
-    void saveTest(){
+    void saveTest() {
+        // Given
         note = new Note();
         note.setNid("note");
         note.setNName("노트");
 
         noteRepository.saveAndFlush(note);
-        RequestNoteData form = new RequestNoteData();
+
+        RequestNoteConfig form = new RequestNoteConfig();
         form.setNoteSeq(1L);
         form.setNid(note.getNid());
-        form.setUsername("test01@test.org");
+        form.setNName("업데이트된 노트 이름");  // NName 값 설정
         form.setCategory("분류1");
-        form.setSubject("제목");
-        form.setContent("내용");
-        form.setGid("groupId");  // 필수 필드 설정
 
-        // save 메소드를 호출합니다.
-        noteSaveService.save(form);
+        // When
+        noteConfigSaveService.save(form);
 
-        // 저장된 NoteData를 조회하기 위한 검색조건 설정
-        // gid와 nid가 일치하는 NoteData를 조회합니다.
-        Optional<NoteData> savedNoteData = noteDataRepository.findById(form.getNoteSeq());
-        assertNotNull(savedNoteData, "NoteData should not be null");
-
-
+        // Then
+        Optional<Note> savedNote = noteRepository.findById(form.getNid());
+        assertTrue(savedNote.isPresent(), "NoteData should not be null");
+        assertEquals("업데이트된 노트 이름", savedNote.get().getNName());
     }
+
 }
