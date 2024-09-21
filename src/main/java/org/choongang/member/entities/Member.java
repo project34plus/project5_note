@@ -2,8 +2,7 @@ package org.choongang.member.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-
-import java.util.List;
+import org.choongang.member.constants.Authority;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,5 +20,8 @@ public class Member {
 
     private String mobile;
 
-    private List<Authorities> authorities;
+    private Authority authorities;
+
+    private String memMajor;
+    private String memMinor;
 }
