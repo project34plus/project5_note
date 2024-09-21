@@ -36,10 +36,10 @@ public class NoteData extends BaseEntity {
     @Column(nullable=false)
     private String content; // 내용
 
-    @Column(length = 80, nullable=false)
+    @Column(length = 80)
     private String email; // 로그인 회원 이메일
 
-    @Column(length = 40, nullable=false)
+    @Column(length = 40)
     private String username; //로그인 회원명
 
     @Transient

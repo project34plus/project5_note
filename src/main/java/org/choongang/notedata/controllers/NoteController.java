@@ -23,6 +23,7 @@ import java.util.List;
 @Tag(name="Note", description = "노트 API")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/note")
 public class NoteController {
 
     private final HttpServletRequest request;
@@ -52,7 +53,8 @@ public class NoteController {
             @Parameter(name = "nid", required = true, description = "경로변수, 노트 설정 아이디")
     })
     @PostMapping("/write/{nid}")
-    public ResponseEntity<Void> write(@PathVariable("nid") String noteSeq, @Valid @RequestBody RequestNoteData form) {
+    public ResponseEntity<Void> write(@PathVariable("nid") String nid, @Valid @RequestBody RequestNoteData form) {
+        form.setNid(nid);
         form.setMode("register");
         return save(form);
     }
@@ -62,10 +64,10 @@ public class NoteController {
     @Parameters({
             @Parameter(name = "noteSeq", required = true, description = "경로변수, 노트 작성 번호")
     })
-    @PatchMapping("/update/{noteSeq}")
-    public ResponseEntity<Void> update(@PathVariable("noteSeq") Long noteSeq, @Valid @RequestBody RequestNoteData form) {
+    @PatchMapping("/update/{Seq}")
+    public ResponseEntity<Void> update(@PathVariable("Seq") Long Seq, @Valid @RequestBody RequestNoteData form) {
+        form.setNoteSeq(Seq);
         form.setMode("update");
-        form.setNoteSeq(noteSeq);
         return save(form);
     }
 
@@ -103,8 +105,8 @@ public class NoteController {
     @Operation(summary = "노트 삭제", method="DELETE")
     @ApiResponse(responseCode = "200")
     @Parameter(name="noteSeq", required = true, description = "경로변수, 노트 작성 번호")
-    @DeleteMapping("/{noteSeq}")
-    public void delete(@PathVariable("noteSeq") Long noteSeq) {
-        noteDeleteService.delete(noteSeq);
+    @DeleteMapping("/delete/{Seq}")
+    public void delete(@PathVariable("Seq") Long Seq) {
+        noteDeleteService.delete(Seq);
     }
 }
