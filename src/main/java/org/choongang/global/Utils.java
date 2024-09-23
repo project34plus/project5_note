@@ -112,4 +112,10 @@ public class Utils { // 빈의 이름 - utils
     public String getParam(String name) {
         return request.getParameter(name);
     }
+
+
+    public String adminUrl(String url){
+        List<ServiceInstance> instances = discoveryClient.getInstances("admin-service");
+        return String.format("%s%s", instances.get(0).getUri().toString(),url);
+    }
 }

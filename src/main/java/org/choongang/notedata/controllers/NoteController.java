@@ -10,7 +10,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.choongang.global.ListData;
 import org.choongang.global.rests.JSONData;
+import org.choongang.notedata.entities.Note;
 import org.choongang.notedata.entities.NoteData;
+import org.choongang.notedata.services.NoteConfigInfoService;
 import org.choongang.notedata.services.NoteDeleteService;
 import org.choongang.notedata.services.NoteInfoService;
 import org.choongang.notedata.services.NoteSaveService;
@@ -19,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Tag(name="Note", description = "노트 API")
 @RestController
@@ -30,7 +33,7 @@ public class NoteController {
     private final NoteSaveService noteSaveService;
     private final NoteDeleteService noteDeleteService;
     private final NoteInfoService noteInfoService;
-
+    NoteConfigInfoService noteConfigInfoService;
     /**
      * 1. 노트 설정 조회 - GET /config/{nid}
      * 2. 노트 작성, 수정  POST /write/{nid},  PATCH /update/{noteSeq}  -> /save
@@ -43,8 +46,9 @@ public class NoteController {
     @Parameter(name="nid", required = true, description = "경로변수, 노트 설정 아이디")
     @GetMapping("/config/{nid}")
     public JSONData config(@PathVariable("nid") String nid) {
+        Optional<Note> item = noteConfigInfoService.get(nid);
 
-        return null;
+        return new JSONData(item);
     }
 
     @Operation(summary = "노트 작성", method="POST")
