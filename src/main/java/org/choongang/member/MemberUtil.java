@@ -20,8 +20,8 @@ public class MemberUtil {
 
     public boolean isAdmin() {
         if (isLogin()) {
-            List<Authorities> authorities = getMember().getAuthorities();
-            return authorities.stream().anyMatch(s -> s.getAuthority().equals(Authority.ADMIN));
+            Authority authority = getMember().getAuthorities();
+            return authority != null && authority.equals(Authority.ADMIN);
         }
         return false;
     }
