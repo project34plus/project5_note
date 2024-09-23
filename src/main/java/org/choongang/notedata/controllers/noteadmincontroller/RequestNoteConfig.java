@@ -1,12 +1,12 @@
 package org.choongang.notedata.controllers.noteadmincontroller;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestNoteConfig {
-
-    private Long noteSeq;
 
     private String mode;
     @NotBlank
