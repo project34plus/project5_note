@@ -23,7 +23,7 @@ public class NoteConfigSaveService {
     public void save(RequestNoteConfig form) {
 
         String mode = Objects.requireNonNullElse(form.getMode(), "register");
-        String nid = String.valueOf(form.getNoteSeq());
+        String nid = form.getNid();
 
         Note note = null;
         if (mode.equals("update") && nid != null) {

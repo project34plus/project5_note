@@ -45,9 +45,9 @@ public class NoteAdminController {
     @Operation(summary = "노트 설정 수정", method="PATCH")
     @ApiResponse(responseCode = "200")
     @PatchMapping("/update/{nid}")
-    public ResponseEntity<Void> update(@PathVariable("nid") Long nid, @Valid @RequestBody RequestNoteConfig form) {
+    public ResponseEntity<Void> update(@PathVariable("nid") String nid, @Valid @RequestBody RequestNoteConfig form) {
         form.setMode("update");
-        form.setNoteSeq(nid);
+        form.setNid(nid);
         return save(form);
     }
 
