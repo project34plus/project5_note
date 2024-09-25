@@ -57,7 +57,7 @@ public class NoteConfigSaveServiceTest {
         noteRepository.saveAndFlush(note);
 
         RequestNoteConfig form = new RequestNoteConfig();
-        form.setNoteSeq(1L);
+//        form.setNoteSeq(1L);
         form.setNid(note.getNid());
         form.setNName("업데이트된 노트 이름");  // NName 값 설정
         form.setCategory("분류1");
