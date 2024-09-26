@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class NoteData extends BaseEntity {
     @Id @GeneratedValue
-    private Long noteSeq; // 노트 번호
+    private Long noteSeq; // 노트 번호!
 
     @JoinColumn(name="nid")
     @ManyToOne(fetch = FetchType.LAZY)
