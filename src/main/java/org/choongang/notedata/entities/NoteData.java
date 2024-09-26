@@ -1,5 +1,6 @@
 package org.choongang.notedata.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NoteData extends BaseEntity {
     @Id @GeneratedValue
     private Long noteSeq; // 노트 번호
