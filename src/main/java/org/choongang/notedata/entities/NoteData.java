@@ -22,7 +22,7 @@ public class NoteData extends BaseEntity {
     private Long noteSeq; // 노트 번호
 
     @JoinColumn(name="nid")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Note note;
 
     @Column(length=60)
