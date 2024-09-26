@@ -1,5 +1,6 @@
 package org.choongang.notedata.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,6 +16,7 @@ import org.choongang.global.entities.BaseMemberEntity;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Note extends BaseMemberEntity {
     @Id
     @Column(length = 40)

@@ -1,5 +1,6 @@
 package org.choongang.notedata.controllers;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.choongang.file.entities.FileInfo;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestNoteData {
 
     private Long noteSeq;
